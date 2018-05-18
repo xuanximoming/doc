@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 凡是 datafield 有值的情况下，值形如Value@的中@必须要按序排列 从1开始；时间和签名列除外 -->
+  <Columns horRepeat="0">
+    <Column offsetXPreCol="0" y="50" width="100" height="60" text="日期/时间" fontsize="" bold="0" align="0" datafield="DateTimeShow"></Column>
+	<Column offsetXPreCol="100" y="50" width="50" height="60" text="检查方式" fontsize="" bold="0" align="0" datafield="Value1"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="血压mmHg" fontsize="" bold="0" align="0" datafield="Value2"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="体重kg" fontsize="" bold="0" align="0" datafield="Value3"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="宫高cm" fontsize="" bold="0" align="0" datafield="Value4"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="腹围cm" fontsize="" bold="0" align="0" datafield="Value5"></Column>
+        <Column offsetXPreCol="50" y="50" width="50" height="60" text="胎位" fontsize="" bold="0" align="0" datafield="Value6"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="胎心次/分" fontsize="" bold="0" align="0" datafield="Value7"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="胎先露位置" fontsize="" bold="0" align="0" datafield="Value8"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="胎动次/12小时%" fontsize="" bold="0" align="0" datafield="Value9"></Column>
+        <Column offsetXPreCol="50" y="50" width="50" height="60" text="浮肿" fontsize="" bold="0" align="0" datafield="Value10"></Column>
+	<Column offsetXPreCol="50" y="50" width="50" height="60" text="其他" fontsize="" bold="0" align="0" datafield="Value11"></Column>
+	
+</Columns>
+  <StaticText>
+    <item x="40" y="0" width="740" height="0" text="产程观察记录表" fontsize="20" bold="1" align=""></item>
+    <item x="0" y="1000" width="827" height="40" text="第      页" fontsize="11" bold="0" align=""></item>
+ 
+  </StaticText>
+
+  <PatientInfo>
+    <item x="40" y="40" width="740" height="40" align="0" fontsize="20" bold="1" datafield="HospitalName"   text="@"></item>
+    <item x="0" y="1090" width="827" height="40" align="0" fontsize="11" bold="0" datafield="CurrPage"   text="@"></item>
+    <item x="40" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="Depart"   text="科别：@"></item>
+    <item x="200" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="InBedNo"  text="床号：@"></item>
+    <item x="400" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="InpatientName"  text="姓名：@"></item>
+    <item x="600" y="110" width="220" height="32" align="-1" fontsize="11" bold="0" datafield="InNo"  text="住院号：@"></item>
+  </PatientInfo>
+
+  <OtherInfo>
+  </OtherInfo>
+
+  <SpecialLines>
+  </SpecialLines>
+
+  <PrintPageSize width="800" height="1169" type="A4" Landscape="false"></PrintPageSize>
+  <ImageSize width="827" height="986" rowCount="30" tableRowcount="30" rowHeight="28" dataRegionStartY="110"></ImageSize>
+  <DataValueStyle fontName="宋体" fontSize="9"></DataValueStyle>
+</root>

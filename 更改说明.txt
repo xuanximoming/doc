@@ -1,0 +1,67 @@
+﻿1.增加DrectSoft.MainFrame.PublicClass 取医院名称，并且解密。
+2.主界面窗体、病案首页、病历中涉及医院名的设置。
+	具体取值方式：DrectSoft.MainFrame.PublicClass.getHosName()
+	修改地方例如：
+	将 ： g.DrawString(m_IemMainPageEntity.IemBasicInfo.HospitalName, font1, Brushes.Black, new RectangleF(0f, m_PointYTitle - 5, m_PageWidth, 35), sf);
+	改为：g.DrawString(DrectSoft.MainFrame.PublicClass.getHosName(), font1, Brushes.Black, new RectangleF(0f, m_PointYTitle - 5, m_PageWidth, 35), sf);
+
+
+2.1、DrectSoft.MainFrame.FormMain中两个
+2.2、DrectSoft.Core.YDNurseDocument.MethodSet 一个
+2.3、DrectSoft.Emr.QcManagerNew.EmrScoreData 一个
+2.4、DrectSoft.Emr.QcManager.EmrScoreData 一个
+2.5、DrectSoft.Emr.QcManager.SqlManger 一个
+2.6、DrectSoft.Emr.QcManager.EmrScoreData 一个
+2.7、DrectSoft.Core.NursingDocuments.PublicSet.MethodSet 一个
+2.8、DrectSoft.Core.NursingDocuments.PublicSet.MethodSet 一个
+
+
+
+3.加密字符串生成工具源码在app.rar文件中。
+
+
+4.ShowTempletHeader 更改知情同意书文件的模板子标题为同意书名称
+
+5.AddNewTemplate  更改默认为使用全局页面设计
+
+6.DrectSoft.MainFrame.FormMain 包含PACS代码
+
+7.MainEmrPad.New.UCEmrInputBody.cs 左侧病历文档树显示隐藏
+
+8.更改模版工程右侧目录树显示
+
+9.优化隐藏表格后，选中元素不能打印
+
+10.修改转科后页眉科室不变
+
+11.修改一个主任管理多个科室的问题
+
+12.修复因为11条导致的主任没办法质控提交非主管科室问题
+
+13.修复本人“申请开放”仍然显示修改痕迹问题
+
+14.修复同步程序自动提交报错
+
+15.新增“取消出院”功能
+
+16.新增“病历浏览”功能
+
+17.增加儿科关于新生儿年龄的处理（精确到分钟）
+
+18.妇产科新生儿不需要年龄。
+
+19.妇产科使用设置婴儿，新建婴儿病历文件夹。
+
+20.修复婴儿新建病历后不能保存“出生记录”。
+
+21.修复病历浏览住院病人查不到数据
+
+22.修改立春在阳历3号，陷入死循环的问题
+
+23.修复一月初入院病人节气显示错误
+
+24.修改为入院记录只能建立一份。
+
+25.修复建立一份入院记录后，转科或者换医生后入院记录无法书写出院诊断的问题
+
+26.修改医生转科病人查看页面病人姓名看不到转科的人，现更改为只能看到转科的患者

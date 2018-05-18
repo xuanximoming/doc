@@ -1,0 +1,6 @@
+用emr用户登陆
+1、select * from hospitalinfo  for update 
+修改 医院信息
+
+2、登陆电子病历,打开系统配置  找到参数 Main Title Text
+修改 医院信息

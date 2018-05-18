@@ -1,0 +1,94 @@
+truncate table  inpatient; --病人信息
+truncate table  allergyhistory; --过敏史
+truncate table  applyrecord; --病历借阅申请记录表
+truncate table  advicegroup;  --成套医嘱库
+truncate table  advicegroupdetail; --成套医嘱明细库
+truncate table  bedinfo; --病人床位信息库
+truncate table  consultapply; --会诊申请   
+truncate table  consultapplydepartment; --会诊部门
+truncate table  consultrecorddepartment; --会诊记录部门
+truncate table  dept_deductpoint; --科室失分统计主表
+truncate table  dept_deductpointdetail; --科室失分统计子表
+truncate table  Doctor_AssignPatient; --病区一览模医师分管病患
+truncate table  drugallergy; --病人过敏记录
+truncate table  drugdoselimit; --处方药品剂量限制库
+truncate table  emr_pat_diag; --初步诊断、修正诊断等
+truncate table  patdiag; ----初步诊断、修正诊断等
+truncate table  familyhistory; --家族史
+truncate table  iem_mainpage_basicinfo; --首页基本信息
+truncate table  iem_mainpage_diagnosis; --首页诊断
+truncate table  iem_mainpage_operation; --首页手术
+truncate table  illnesshistory; --疾病史
+truncate table  inpatientreport; --病人报告清单数据
+truncate table  inpatientreportlisreslut; --检验报告
+truncate table  inpatientreportrisreslut; --检查报告
+truncate table  jobmanagerlog; --任务管理器日志
+--truncate table  job2permission; --角色对应权限表
+truncate table  long_order; --(病区)长期医嘱 
+truncate table  newsarticle;--新闻
+truncate table  notesonnursing; --护理记录表
+truncate table  nursrecordtable; --病人护理记录单表格表
+truncate table  operatehistory; --操作记录库 
+truncate table  patientcontacts; --病人联系人表 
+truncate table  patientrecordlog; --(病历文件)操作记录库
+truncate table  personalhistory; --个人史
+truncate table  printhistory; --打印历史库
+truncate table  qcgrade; --评分分数记录
+truncate table  qcproblem; --质量问题库
+truncate table  qcproblemdescription; --问题登记
+truncate table  qcrecord; --病历质量控制记录库
+truncate table  recorddetail; --病历(详细记录)库
+truncate table  surgeryhistory; --手术史
+truncate table  templatepersongroup; --个人模板分类
+truncate table  templatesort_person; 
+truncate table  template_collect; --病历抽取
+truncate table  template_department; --科室模板
+truncate table  template_person; ----个人模板
+truncate table  template_recent; --最近使用模板
+truncate table  template_table; --护理记录单表格模板
+truncate table  templet2hisdept; --模板对应HIS部门
+truncate table  tempusers; --临时授权用户
+truncate table  temp_order; --临时医嘱库 
+truncate table  test_person_info; --测试数据表
+truncate table  trackrecord; --(病历文件)阅读记录库
+truncate table  user_login; --用户登录记录
+truncate table  analysis_project; --医师病历查询记录库
+truncate table  emrdept2his; --EMR 与 HIS 部门的对应关系
+truncate table  dept2dgrs; --病种，临床科室对应库
+truncate table  dept2disease; --科室病种对应
+truncate table  dept2ward; --科室病区对应库
+truncate table  tmp_querybrowserinward;
+truncate table  tmp_querybrowserinwardpat;
+truncate table  tmp_querybrowserinwardpatexist;
+truncate table  tmp_querybrowserinward_extraop;
+truncate table  tmp_queryhistory_pats;
+truncate table  tmp_queryhistory_result;
+truncate table  tmp_queryinwardpatients;
+truncate table  tmp_queryinwardpats_extraop;
+truncate table  tmp_queryownmanagerpat;
+truncate table  tmp_queryqcgrade;
+truncate table  tmp_queryquitpatientnodoctor;
+truncate table  tmp_queryquitpatientno_extraop;
+truncate table  tmp_templet;
+truncate table  department; --科室代码库
+truncate table  department_a; --一级科室
+truncate table  department_b; --二级科室
+truncate table  user2dept; --职工科室对应库 
+truncate table  users; --职工代码
+truncate table  ward; --病区
+truncate table  bed; --病床信息			
+truncate table IEM_MAINPAGE_BASICINFO_SX;--病案基本信息表
+truncate table IEM_MAINPAGE_DIAGNOSIS_SX;--病案诊断
+truncate table IEM_MAINPAGE_FEEINFO;--病案病人费用
+truncate table IEM_MAINPAGE_OBSTETRICSBABY;--病案新生儿信息
+truncate table IEM_MAINPAGE_OPERATION;
+truncate table IEM_MAINPAGE_OPERATION;
+truncate table INCOMMONNOTE;--护理记录单记录
+truncate table INCOMMONNOTE_COLUMN;
+truncate table INCOMMONNOTE_COLUMNHIS;
+truncate table INCOMMONNOTE_COLUMN_TYPE;
+truncate table INCOMMONNOTE_ROW;
+truncate table INCOMMONNOTE_ROWHIS;
+truncate table INCOMMONNOTE_TAB;
+truncate table INPATIENTCHANGEINFO;
+truncate table INPATIENT_CLINIC;

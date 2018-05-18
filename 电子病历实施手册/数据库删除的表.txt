@@ -1,0 +1,55 @@
+-- Create table
+create table YIDANACTION
+(
+  actiondate VARCHAR2(4000) not null
+)
+tablespace TSP_YDEMR
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table YIDANMAC
+(
+  pcmac     VARCHAR2(4000) not null,
+  pcregdate DATE not null
+)
+tablespace TSP_YDEMR
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column YIDANMAC.pcmac
+  is '机器加密mac地址';
+comment on column YIDANMAC.pcregdate
+  is '注册时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table YIDANMAC
+  add constraint PK_PCMAC primary key (PCMAC)
+  using index 
+  tablespace TSP_YDEMR
+  pctfree 10
+  initrans 2
+  maxtrans 167
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );345C38UD182B15U298BAU6EB3DDUEBC93CBDC	2013/7/11 17:29:56
+

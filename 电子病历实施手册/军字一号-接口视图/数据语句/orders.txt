@@ -1,0 +1,50 @@
+create or replace view dc_orders
+(patient_id, visit_id, date_bgn, drug_type, class_name, type_name,date_end,CONTENT,order_no)
+as
+select "PATIENT_ID",
+       "VISIT_ID",
+       to_char(a.start_date_time, 'yyyy-mm-dd hh24:mi:ss'),
+       case a.order_sub_no
+         when 1 then
+          (case ORDER_CLASS
+            when 'A' then
+             '药品'
+            when 'B' then
+             '药品'
+            else
+             '非药品'
+          end)
+         else
+          ''
+       end,
+       case a.order_sub_no
+         when 1 then
+          (case ORDER_CLASS
+            when 'A' then
+             '药品'
+            when 'B' then
+             '药品'
+            else
+             '非药品'
+          end)
+         else
+          ''
+       end,
+       case a.order_sub_no
+         when 1 then
+          (case a.repeat_indicator
+            when 1 then
+             '长期'
+            else
+             '临时'
+          end)
+         else
+          ''
+       end,
+       to_char(a.stop_date_time, 'yyyy-mm-dd hh24:mi:ss'),
+       a.order_no || '  ' || a.order_text || '  ' ||
+       (decode(a.dosage, null, '', to_char(a.dosage, 'FM999990.0099'))) ||
+       a.dosage_units|| '  '||
+       decode(a.freq_detail,'','','说明：'||a.freq_detail),
+       a.order_no
+  from orders a;

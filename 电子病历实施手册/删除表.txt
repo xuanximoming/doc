@@ -1,0 +1,26 @@
+truncate table  department_a; --一级科室
+truncate table  department_b; --二级科室
+truncate table  user2dept; --职工科室对应库 
+truncate table  ward; --病区
+truncate table  bed; --病床信息
+truncate table  dept2dgrs; --病种，临床科室对应库
+truncate table  dept2disease; --科室病种对应
+truncate table  dept2ward; --科室病区对应库
+truncate table  consultapply; --会诊申请
+truncate table  inpatient; --病人信息
+truncate table  recorddetail; --病历(详细记录)库
+truncate table  template_person; ----个人模板
+truncate table  templet2hisdept; --模板对应HIS部门
+truncate table  emrdept2his; --EMR 与 HIS 部门的对应关系
+truncate table  dept2ward; --科室病区对应库
+truncate table  newsarticle;--新闻
+truncate table  consultrecorddepartment; --会诊记录部门
+truncate table  consultapplydepartment; --会诊部门
+truncate table  consultapply; --会诊申请
+truncate table incommonnote_row;--护理表格记录表
+truncate table incommonnote_column_type;--护理表格字段表
+truncate table INCOMMONNOTE_COLUMN;--护理表格字段数据表
+truncate table incommonnote_columnhis;--插入护理单据的历史记录 列
+truncate table incommonnote_rowhis;--插入护理单据的历史记录
+truncate table INPATIENTCHANGEINFO;--转科记录表
+truncate table OPERATIONRECORDDETAIL;--病历修改记录表

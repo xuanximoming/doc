@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 凡是 datafield 有值的情况下，值形如Value@的中@必须要按序排列 从1开始；时间和签名列除外 -->
+  <Columns horRepeat="0">
+    <Column offsetXPreCol="0" y="90" width="70" height="60" text="日期/时间" fontsize="" bold="0" align="0" datafield="DateTimeShow"></Column>
+  
+ 
+    <Column offsetXPreCol="70" y="90" width="30" height="60" text="体温℃" fontsize="" bold="0" align="0" datafield="Value1"></Column>
+    <Column offsetXPreCol="30" y="90" width="40" height="60" text="脉搏次/分" fontsize="" bold="0" align="0" datafield="Value2"></Column>
+    <Column offsetXPreCol="40" y="90" width="30" height="60" text="呼吸次/分" fontsize="" bold="0" align="0" datafield="Value3"></Column>
+    <Column offsetXPreCol="30" y="90" width="50" height="60" text="血压mmHg" fontsize="" bold="0" align="0" datafield="Value4"></Column>
+
+    <Column offsetXPreCol="50" y="90" width="40" height="60" text="意识" fontsize="" bold="0" align="0" datafield="Value5"></Column>
+    <Column offsetXPreCol="40" y="90" width="30" height="60" text="血氧" fontsize="" bold="0" align="0" datafield="Value6"></Column>
+    <Column offsetXPreCol="30" y="90" width="35" height="60" text="吸氧" fontsize="" bold="0" align="0" datafield="Value7"></Column>
+    <Column offsetXPreCol="35" y="90" width="35" height="60" text="敷料情况" fontsize="" bold="0" align="0" datafield="Value8"></Column>
+
+    <Column offsetXPreCol="35" y="90" width="35" height="60" text="分娩方式" fontsize="" bold="0" align="0" datafield="Value9"></Column>
+    <Column offsetXPreCol="35" y="90" width="40" height="60" text="体位" fontsize="" bold="0" align="0" datafield="Value10"></Column>
+
+    <Column offsetXPreCol="40" y="90" width="50" height="60" text="饮食" fontsize="" bold="0" align="0" datafield="Value11"></Column>
+
+    <Column offsetXPreCol="50" y="90" width="30" height="60" text="管理情况" fontsize="" bold="0" align="0" datafield="Value12"></Column>
+	<Column offsetXPreCol="30" y="90" width="90" height="25" text="尿管" fontsize="" bold="0" align="0" datafield=""></Column>
+    <Column offsetXPreCol="0" y="115" width="30" height="35" text="通畅" fontsize="" bold="0" align="0" datafield="Value13"></Column>
+    <Column offsetXPreCol="30" y="115" width="30" height="35" text="尿色" fontsize="" bold="0" align="0" datafield="Value14"></Column>
+    <Column offsetXPreCol="30" y="115" width="30" height="35" text="尿量" fontsize="" bold="0" align="0" datafield="Value15"></Column>
+    <Column offsetXPreCol="30" y="90" width="30" height="60" text="皮肤" fontsize="" bold="0" align="0" datafield="Value16"></Column>
+    <Column offsetXPreCol="30" y="90" width="300" height="60" text="病情观察及护理措施" fontsize="" bold="0" align="-1" datafield="Value17"></Column>
+    <Column offsetXPreCol="300" y="90" width="60" height="60" text="签名" fontsize="" bold="0" align="0" datafield="Value18"></Column>
+  </Columns>
+  <StaticText>
+    <item x="30" y="30" width="986" height="35" text=" 护理记录单（妇产科）" fontsize="20" bold="1" align=""></item>
+    <item x="0" y="710" width="1186" height="70" text="第      页" fontsize="11" bold="0" align=""></item>
+    <item x="80" y="650" width="986" height="70" text="备注：皮肤：A、正常B、水肿C、破损D、出血点E、压疮 敷料：A、清洁B、渗血或渗液 意识A、清醒B、意识模糊C、嗜睡D、浅昏迷E、深昏迷 体位：A、去枕平卧B、侧卧位C、半卧位D、自动体位E、臀高卧位 管理：A、尿管B、静脉留置针C、引流管D、胃管E、锁骨下静脉置管 饮食：A、禁食水B、流食C、软食D、普食E、糖尿病饮食F、低盐或低脂饮食 通畅：A、是B、否 尿色：A、淡黄色B、深黄色C褐色D、血尿E其他。" fontsize="11" bold="0" align="-1"></item>
+  </StaticText>
+
+  <PatientInfo>
+    <item x="40" y="40" width="986" height="40" align="0" fontsize="20" bold="1" datafield="HospitalName"   text="@"></item>
+    <item x="40" y="765" width="1100" height="40" align="0" fontsize="11" bold="0" datafield="CurrPage"   text="@"></item>
+    <item x="100" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="Depart"   text="科别：@"></item>
+    <item x="300" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="InBedNo"  text="床号：@"></item>
+    <item x="500" y="110" width="150" height="32" align="-1" fontsize="11" bold="0" datafield="InpatientName"  text="姓名：@"></item>
+    <item x="760" y="110" width="220" height="32" align="-1" fontsize="11" bold="0" datafield="InNo"  text="住院号：@"></item>
+  </PatientInfo>
+
+  <OtherInfo>
+  </OtherInfo>
+
+  <SpecialLines>
+  </SpecialLines>
+
+  <PrintPageSize width="1169" height="827" type="A4" Landscape="true"></PrintPageSize>
+  <ImageSize width="986" height="740" rowCount="17" tableRowcount="17" rowHeight="28" dataRegionStartY="150"></ImageSize>
+  <DataValueStyle fontName="宋体" fontSize="9"></DataValueStyle>
+</root>

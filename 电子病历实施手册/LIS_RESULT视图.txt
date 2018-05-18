@@ -1,0 +1,44 @@
+USE [LIS]
+GO
+/****** 对象:  View [dbo].[LIS_Result]    脚本日期: 06/09/2011 14:37:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE view [dbo].[LIS_Result] as
+select 
+K.ID,--组合项目唯一ID
+a.name,--患者姓名
+a.pid,--患者编码
+a.sex,--性别
+a.age,--年龄
+a.ecode,--仪器编码
+f.name as Sjys,--送检医生
+g.name as KDks,--开单科室
+e.name as Sjyb,--标本类型
+h.sfname as sfxm,--收费项目
+b.testnum,--标本号
+d.name as JYXM,--检验明细项目
+d.ename as Ywmc,--英文名称
+b.Result, --结果
+D.UNIT AS Dw,--单位
+b.limit as Ckfw,--参考范围
+b.state as Ts,--状态
+d.printord as Sxh,--打印顺序
+a.sampledate as time1,--交费时间
+b.TestTime as time2,--检测时间
+a.printtime as time3,--打印时间
+c.name as tester, --检验者
+c.name as Shys,--审核者
+case a.pid when '' then '门诊' else '住院' end  as Hzlx--患者类型
+from patientbase h inner join InfoBase i on h.id=i.BaseId
+inner join feeitemsub j on j.feeitemcode = i.sfcode 
+inner join PatientInfo a on i.infoid = a.id 
+inner join PatResult b on a.TestDate = b.TestDate and a.Ecode = b.Ecode and a.Scode = b.Scode and a.TestNum = b.TestNum and j.ticode = b.ticode
+inner join operator c on a.optcode = c.code
+inner join testitem d on b.ticode=d.code 
+left join BaseSample e on a.samplecode=e.code
+left join basedoctor f on a.dctcode=f.code
+left join basedepartment g on a.dptcode=g.code
+left join hisinterface K on h.HID=K.HID
+where a.TestDate > getdate()-60  and a.tstate>1
