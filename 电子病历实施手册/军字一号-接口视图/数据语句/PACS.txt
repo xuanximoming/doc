@@ -1,9 +1,0 @@
-select p.infeepatientid 住院号, p.patientname 患者姓名, p.sex 性别, p.age 年龄,
-                    p.devicetype 设备类型, p.devicename 设备名称, p.studyscription 检查项目,
-                    p.studytime 检查时间, p.studystatusname 检查状态,
-                    p.reportdescribe 描述,
-                    p.reportdiagnose 诊断,
-                    p.reportadvice 建议,
-                    p.docname 报告医生, p.operatetime 最终报告时间
-                    from V_REPORTINFO p
-                    where p.infeepatientid = '{0}' 

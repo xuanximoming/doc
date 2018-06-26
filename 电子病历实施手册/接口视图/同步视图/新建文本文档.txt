@@ -1,0 +1,128 @@
+CREATE OR REPLACE VIEW DC_INPATIENT AS
+(
+SELECT
+b.inp_no||'_'||a.visit_id   patnoofhis ,--HIS 首页序号
+a.patient_id  noofclinic ,--门诊号
+b.inp_no  noofrecord , --病案号
+b.inp_no  patid, --病历号
+b.name   name, --病人姓名
+case a.charge_type  when  '城镇医保' then '1'
+                                   when  '职工医保' then '1'
+                                   when  '农合医疗' then '1'
+                                  when  '自费'     then '5'
+                                   else  '0'
+end  payid,    --病人性质ID
+''  pact_name, --病人性质
+''  origin,    -- 病人来源
+''  source_name,
+a.visit_id incount,-- 入院次数
+case b.sex    when '男' then '1'
+                            when '女'  then '2'
+                             else  '1'
+end sexid, --性别ID
+b.sex            sexname, --性别
+b.date_of_birth  birth ,--出生日期
+to_number(fun_get_age(b.date_of_birth,a.ADMISSION_DATE_TIME,2)) age,
+fun_get_age(b.date_of_birth,a.ADMISSION_DATE_TIME,1) agestr,
+b.id_no  idno,-- 身份证号
+case a.marital_status       when '未婚' then '1' --未婚
+                              when '已婚' then '2' --已婚
+                              when '离婚' then '4' --离异
+                              when '丧偶' then '3' --丧偶
+                              when '其他' then '9' --其他
+end marital ,--婚姻状况
+'' mari,
+ a.occupation  jobid,-- 职业代码
+----a.identity jobname, --职业名称
+''  jobname, --职业名称
+/*
+'' provinceid ,--暂时为空
+'' countyid,-- 暂时为空
+*/
+'' provincename,
+'' countyname,
+/*
+'' nationid ,--暂时为空
+'' nationalityid,-- 暂时为空
+*/
+lower(b.citizenship) nationalityid ,--国籍
+(select t.nation_code from NATION_DICT t where t.nation_name =b.nation and rownum=1)   nationid,--民族
+b.citizenship nationalityname,
+b.UNIT_IN_CONTRACT organization,-- 工作单位
+'' officeplace,-- 单位地址
+b.PHONE_NUMBER_BUSINESS officetel ,--单位电话
+'' officepost ,--单位邮编
+fun_replace_address(b.BIRTH_PLACE) provinceid ,--出生地址
+fun_replace_address(b.BIRTH_PLACE) nativeaddress ,--户口地址
+b.PHONE_NUMBER_HOME nativetel ,--户口电话
+b.ZIP_CODE nativepost ,--户口邮编
+b.MAILING_ADDRESS address,-- 当前地址
+b.NEXT_OF_KIN contactperson,-- 联系人姓名
+b.RELATIONSHIP relationship,-- 联系人关系ID
+(select RELATIONSHIP_DICT.RELATIONSHIP_NAME from RELATIONSHIP_DICT where RELATIONSHIP_DICT.RELATIONSHIP_CODE=b.Relationship and rownum=1) rela_name, -- 联系人关系
+b.NEXT_OF_KIN_ADDR contactaddress,-- 联系人地址
+'' contactoffice,-- 联系人单位
+b.NEXT_OF_KIN_PHONE contacttel,-- 联系人电话
+b.NEXT_OF_KIN_ZIP_CODE contactpost,-- 联系人邮编
+'' socialcare,-- 社保卡号
+'' insurance,-- 保险卡号
+'' cardno,-- 其他卡号
+a.PAT_ADM_CONDITION admitinfo,-- 入院情况
+nvl( a.dept_admission_to,'') admitdept,-- 入院科室
+(select ward_code from dept_vs_ward where dept_code=a.dept_admission_to and rownum=1) admitward,-- 入院病区
+(select bed_rec.bed_label from bed_rec where bed_rec.bed_no = ph.dept_code and bed_rec.dept_code = a.dept_admission_to and rownum=1) admitbed,-- 入院床位
+to_char(a.admission_date_time,'yyyy-mm-dd hh24:mi:ss') admitdate,-- 入院日期
+to_char(a.admission_date_time,'yyyy-mm-dd hh24:mi:ss') inwarddate,-- 入区日期
+----to_char(zct.adt_ward_datetime,'yyyy-mm-dd hh24:mi:ss') inwarddate,-- 入区日期
+ph.DIAGNOSIS admitdiagnosis,-- 入院诊断
+(select t.dept_code from (select* from adt_log l order by l.log_date_time desc)t where t.patient_id= a.patient_id and t.visit_id = a.visit_id  and rownum=1)  outhosdept,-- 出院科室
+(select ward_code from dept_vs_ward where dept_code = (select t.dept_code from (select* from adt_log l order by l.log_date_time desc)t where t.patient_id= a.patient_id and t.visit_id = a.visit_id and rownum=1) and rownum=1)  outhosward,-- 出院病区
+case    when a.dept_discharge_from is not null
+            then (select bed_rec.bed_label from bed_rec where bed_rec.bed_no = ph.dept_code and bed_rec.dept_code = a.dept_discharge_from and rownum=1)
+        when a.dept_discharge_from is null
+            then (select bed_rec.bed_label from bed_rec where bed_rec.bed_no = ph.bed_no and bed_rec.dept_code = ph.dept_code and rownum=1)
+end outbed,-- 出院病床
+to_char(a.DISCHARGE_DATE_TIME,'yyyy-mm-dd hh24:mi:ss') outwarddate,-- 出区日期
+to_char(a.DISCHARGE_DATE_TIME,'yyyy-mm-dd hh24:mi:ss') outhosdate,-- 出院日期
+(select substrb(wm_concat( diagnosis.diagnosis_desc),1,100) from diagnosis  where diagnosis_type='3' and diagnosis_no='1'and patient_id=a.patient_id and visit_id=a.visit_id and rownum=1) outdiagnosis,-- 出院诊断
+(select substrb(wm_concat( diagnosis.diagnosis_desc),1,100) from diagnosis where diagnosis_type='1' and patient_id=a.patient_id and visit_id=a.visit_id and rownum=1)  clinicdiagnosis,-- 门诊诊断
+'' admitway,-- 入院途径ID
+'' admitwayname,-- 入院途径
+case a.DISCHARGE_DISPOSITION when '1' then '1000'
+                                     else ''
+end  outway,-- 出院方式ID
+case a.DISCHARGE_DISPOSITION when '1' then '自动出院'
+                                     else ''end  outwayname, --出院方式
+'' clinicdoctor,-- 门诊医生代码
+a.CONSULTING_DOCTOR clinicdoctorname,-- 门诊医生姓名
+''  resident, -- 住院医师代码
+a.DOCTOR_IN_CHARGE  residentname, --住院医生姓名
+''  attend, --主治医师代码
+a.attending_doctor  attendname,--主治医生姓名
+''          chief, -- 主任医师代码
+a.director          chiefname,--主任医师姓名
+case  when a.dept_discharge_from is null  then  '1500'--入院登记
+      --when (a.dept_discharge_from is null  ) then '1501'--病区分床
+      when a.dept_discharge_from is not null  then '1503'--病人出院
+end   status , --病人状态
+'' statusname , --病人状态
+'' criticallevel , --危重级别
+a.Pat_Adm_Condition  criticallevelname, --危重级别
+'' attendlevel, --护理级别
+'' attendlevelname, --护理级别
+0  isBaby, --是否是婴儿
+'' mother, --母亲
+'' medicareid, --医保代码
+'' style --病人类型
+
+FROM pat_visit a,pat_master_index b,pats_in_hospital ph
+where a.admission_cause <> '新生儿' and
+      a.patient_id=b.patient_id and
+      (a.patient_id = ph.patient_id(+) and
+      a.visit_id = ph.visit_id(+)) and
+      (a.discharge_date_time > sysdate - 5 or a.discharge_date_time is null)
+)
+
+
+-- End of DDL Script for View
+;

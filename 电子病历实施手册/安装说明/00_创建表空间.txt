@@ -1,6 +1,6 @@
 --创建数据表空间
 
-CREATE TABLESPACE TSP_YDEMR
+CREATE TABLESPACE TSP_DSEMR
 logging
 DATAFILE 'F:\oracle\oradata\orcl\EMR.DBF'
 SIZE 2G
@@ -9,9 +9,9 @@ NEXT 1G
 EXTENT MANAGEMENT LOCAL;
 
 --创建用户并指定表空间
-create user emr identified by emr default tablespace TSP_YDEMR;
+create user emr identified by emr default tablespace TSP_DSEMR;
 --修改用户并指定表空间
-alter user emr identified by emr default tablespace TSP_YDEMR;
+alter user emr identified by emr default tablespace TSP_DSEMR;
 
 
 
@@ -20,7 +20,3 @@ grant connect,resource,dba to emr;
 grant create table to emr ;
 grant create view to emr ;
 grant create procedure to emr ;
-
-
-
-导入数据
