@@ -53,3 +53,64 @@ alter table YIDANMAC
     maxextents unlimited
   );345C38UD182B15U298BAU6EB3DDUEBC93CBDC	2013/7/11 17:29:56
 
+-- Create table
+
+
+create table RECORDDETAIL_ERROR2013
+(
+  id              NUMBER not null,
+  recorddetail_id NUMBER not null,
+  noofinpat       NUMBER,
+  content         CLOB not null,
+  reason          NVARCHAR2(300),
+  errortime       DATE,
+  ip              NVARCHAR2(32),
+  valid           NUMBER,
+  memo            NVARCHAR2(300)
+)
+tablespace TSP_DSEMR
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column RECORDDETAIL_ERROR2013.id
+  is '唯一标识ID';
+comment on column RECORDDETAIL_ERROR2013.recorddetail_id
+  is '出错病历ID';
+comment on column RECORDDETAIL_ERROR2013.noofinpat
+  is '病案号';
+comment on column RECORDDETAIL_ERROR2013.content
+  is '病历内容';
+comment on column RECORDDETAIL_ERROR2013.reason
+  is '出错原因';
+comment on column RECORDDETAIL_ERROR2013.errortime
+  is '创建时间';
+comment on column RECORDDETAIL_ERROR2013.ip
+  is 'IP';
+comment on column RECORDDETAIL_ERROR2013.valid
+  is '是否有效';
+comment on column RECORDDETAIL_ERROR2013.memo
+  is '描述';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table RECORDDETAIL_ERROR2013
+  add constraint PK_RECORDDETAIL_ERRORID primary key (ID)
+  using index 
+  tablespace TSP_DSEMR
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
