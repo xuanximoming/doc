@@ -24,6 +24,7 @@ truncate table  inpatientreportlisreslut; --检验报告
 truncate table  inpatientreportrisreslut; --检查报告
 truncate table  jobmanagerlog; --任务管理器日志
 --truncate table  job2permission; --角色对应权限表
+truncate table CURRENTDIAG;
 truncate table  long_order; --(病区)长期医嘱 
 truncate table  newsarticle;--新闻
 truncate table  notesonnursing; --护理记录表
