@@ -1,0 +1,252 @@
+CREATE OR REPLACE PACKAGE TEST1TEST1
+IS
+    -- global 变量宣言
+  /* 变量名 数据型; */
+    -- PROCEDURE，函数宣言
+  /* PROCEDURE名字(变量...); */
+  /* FUNCTION  名称(参数...) RETURN 数据型; */
+
+  
+TYPE empcurtyp IS REF CURSOR;
+
+create or replace procedure aaaa
+(
+       ID in number,
+       vName in number,
+       mess out varchar,
+       testout OUT empcurtyp
+);
+END ;
+
+
+CREATE OR REPLACE PACKAGE TEST1
+IS
+    -- global 变量宣言
+  /* 变量名 数据型; */
+    -- PROCEDURE，函数宣言
+  /* PROCEDURE名字(变量...); */
+  /* FUNCTION  名称(参数...) RETURN 数据型; */
+
+  
+TYPE empcurtyp IS REF CURSOR;
+
+procedure aaaa
+(
+       testid in varchar2,
+       testout OUT empcurtyp
+);
+END ;
+
+ 
+create or replace procedure aaa
+as
+ 
+Cursor emp_cur IS  select cqlsbz, yzxh from tmp_newfzxh order by cqlsbz, yzxh;
+v_ename tmp_newfzxh.cqlsbz%TYPE;
+v_sal   tmp_newfzxh.yzxh%TYPE;
+BEGIN
+IF NOT emp_cur%ISOPEN THEN
+   OPEN emp_cur;
+   DBMS_OUTPUT.PUT_LINE('打开游标');
+END IF;
+NULL;
+LOOP
+   FETCH emp_cur INTO v_ename,v_sal;
+   EXIT WHEN emp_cur%NOTFOUND;
+   DBMS_OUTPUT.PUT_LINE('用户名：'||v_ename||'，工资：'||v_sal);
+END LOOP;
+NULL;
+IF emp_cur%ISOPEN THEN
+   CLOSE emp_cur;
+   DBMS_OUTPUT.PUT_LINE('关闭游标');
+END IF;
+END;
+ 
+ 
+CREATE OR REPLACE PACKAGE WWJ
+  IS
+--
+-- To modify this template, edit file PKGSPEC.TXT in TEMPLATE 
+-- directory of SQL Navigator
+--
+-- Purpose: Briefly explain the functionality of the package
+--
+-- MODIFICATION HISTORY
+-- Person      Date    Comments
+-- ---------   ------  ------------------------------------------       
+   -- Enter package declarations as shown below
+
+   TYPE empcurtyp IS REF CURSOR;
+
+END; -- Package spec 
+ 
+CREATE OR REPLACE PACKAGE TEST IS
+  -- 返回值
+  TYPE empcurtyp IS REF CURSOR;
+
+  --TYPE empcurtyp IS REF CURSOR;
+  /*BedInfo维护*/
+  PROCEDURE usp_EditEmrBedInfo(v_EditType     VARCHAR2 default '', --操作类型
+                               v_ID           NUMBER default 0,
+                               v_NOOFINPAT    NUMBER default 0,
+                               v_FORMERWARD   VARCHAR2 default '',
+                               v_FORMERBEDID  VARCHAR2 default '',
+                               v_FORMERDEPTID VARCHAR2 default '',
+                               v_STARTDATE    CHAR default '',
+                               v_ENDDATE      CHAR default '',
+                               v_NEWDEPT      VARCHAR2 default '',
+                               v_NEWWARD      VARCHAR2 default '',
+                               v_NEWBED       VARCHAR2 default '',
+                               v_MARK         INTEGER default 0,
+                               o_reslut       out empcurtyp);
+  /*Bed维护*/
+  PROCEDURE usp_EditEmrBed(v_EditType     VARCHAR2 default '', --操作类型
+                           v_ID           VARCHAR2 default '',
+                           v_WARDID       VARCHAR2 default '',
+                           v_DEPTID       VARCHAR2 default '',
+                           v_ROOMID       VARCHAR2 default '',
+                           v_RESIDENT     VARCHAR2 default '',
+                           v_ATTEND       VARCHAR2 default '',
+                           v_CHIEF        VARCHAR2 default '',
+                           v_SEXINFO      INTEGER default 0,
+                           v_STYLE        INTEGER default 0,
+                           v_INBED        INTEGER default 0,
+                           v_ICU          INTEGER default 0,
+                           v_NOOFINPAT    NUMBER default 0,
+                           v_PATNOOFHIS   NUMBER default 0,
+                           v_FORMERWARD   VARCHAR2 default '',
+                           v_FORMERBEDID  VARCHAR2 default '',
+                           v_FORMERDEPTID VARCHAR2 default '',
+                           v_BORROW       INTEGER default 0,
+                           v_VALID        INTEGER default 0,
+                           v_MEMO         VARCHAR2 default '',
+                           o_reslut       out empcurtyp);
+  /*InPatient维护*/
+  PROCEDURE usp_EditEmrInPatient(v_EditType        VARCHAR2 default '', --操作类型
+                                 v_NOOFINPAT       NUMBER default 0,
+                                 v_PATNOOFHIS      NUMBER default 0,
+                                 v_NOOFCLINIC      VARCHAR2 default '',
+                                 v_NOOFRECORD      VARCHAR2 default '',
+                                 v_PATID           VARCHAR2 default '',
+                                 v_INNERPIX        VARCHAR2 default '',
+                                 v_OUTPIX          VARCHAR2 default '',
+                                 v_NAME            VARCHAR2 default '',
+                                 v_PY              VARCHAR2 default '',
+                                 v_WB              VARCHAR2 default '',
+                                 v_PAYID           VARCHAR2 default '',
+                                 v_ORIGIN          VARCHAR2 default '',
+                                 v_INCOUNT         INTEGER default 0,
+                                 v_SEXID           VARCHAR2 default '',
+                                 v_BIRTH           CHAR default '',
+                                 v_AGE             INTEGER default 0,
+                                 v_AGESTR          VARCHAR2 default '',
+                                 v_IDNO            VARCHAR2 default '',
+                                 v_MARITAL         VARCHAR2 default '',
+                                 v_JOBID           VARCHAR2 default '',
+                                 v_PROVINCEID      VARCHAR2 default '',
+                                 v_COUNTYID        VARCHAR2 default '',
+                                 v_NATIONID        VARCHAR2 default '',
+                                 v_NATIONALITYID   VARCHAR2 default '',
+                                 v_NATIVEPLACE_P   VARCHAR2 default '',
+                                 v_NATIVEPLACE_C   VARCHAR2 default '',
+                                 v_ORGANIZATION    VARCHAR2 default '',
+                                 v_OFFICEPLACE     VARCHAR2 default '',
+                                 v_OFFICETEL       VARCHAR2 default '',
+                                 v_OFFICEPOST      VARCHAR2 default '',
+                                 v_NATIVEADDRESS   VARCHAR2 default '',
+                                 v_NATIVETEL       VARCHAR2 default '',
+                                 v_NATIVEPOST      VARCHAR2 default '',
+                                 v_ADDRESS         VARCHAR2 default '',
+                                 v_CONTACTPERSON   VARCHAR2 default '',
+                                 v_RELATIONSHIP    VARCHAR2 default '',
+                                 v_CONTACTADDRESS  VARCHAR2 default '',
+                                 v_CONTACTOFFICE   VARCHAR2 default '',
+                                 v_CONTACTTEL      VARCHAR2 default '',
+                                 v_CONTACTPOST     VARCHAR2 default '',
+                                 v_OFFERER         VARCHAR2 default '',
+                                 v_SOCIALCARE      VARCHAR2 default '',
+                                 v_INSURANCE       VARCHAR2 default '',
+                                 v_CARDNO          VARCHAR2 default '',
+                                 v_ADMITINFO       VARCHAR2 default '',
+                                 v_ADMITDEPT       VARCHAR2 default '',
+                                 v_ADMITWARD       VARCHAR2 default '',
+                                 v_ADMITBED        VARCHAR2 default '',
+                                 v_ADMITDATE       CHAR default '',
+                                 v_INWARDDATE      CHAR default '',
+                                 v_ADMITDIAGNOSIS  VARCHAR2 default '',
+                                 v_OUTHOSDEPT      VARCHAR2 default '',
+                                 v_OUTHOSWARD      VARCHAR2 default '',
+                                 v_OUTBED          VARCHAR2 default '',
+                                 v_OUTWARDDATE     CHAR default '',
+                                 v_OUTHOSDATE      CHAR default '',
+                                 v_OUTDIAGNOSIS    VARCHAR2 default '',
+                                 v_TOTALDAYS       NUMBER default 0,
+                                 v_CLINICDIAGNOSIS VARCHAR2 default '',
+                                 v_SOLARTERMS      VARCHAR2 default '',
+                                 v_ADMITWAY        VARCHAR2 default '',
+                                 v_OUTWAY          VARCHAR2 default '',
+                                 v_CLINICDOCTOR    VARCHAR2 default '',
+                                 v_RESIDENT        VARCHAR2 default '',
+                                 v_ATTEND          VARCHAR2 default '',
+                                 v_CHIEF           VARCHAR2 default '',
+                                 v_EDU             VARCHAR2 default '',
+                                 v_EDUC            NUMBER default 0,
+                                 v_RELIGION        VARCHAR2 default '',
+                                 v_STATUS          INTEGER default 0,
+                                 v_CRITICALLEVEL   VARCHAR2 default '',
+                                 v_ATTENDLEVEL     VARCHAR2 default '',
+                                 v_EMPHASIS        INTEGER default 0,
+                                 v_ISBABY          INTEGER default 0,
+                                 v_MOTHER          NUMBER default 0,
+                                 v_MEDICAREID      VARCHAR2 default '',
+                                 v_MEDICAREQUOTA   NUMBER default 0,
+                                 v_VOUCHERSCODE    VARCHAR2 default '',
+                                 v_STYLE           VARCHAR2 default '',
+                                 v_OPERATOR        VARCHAR2 default '',
+                                 v_MEMO            VARCHAR2 default '',
+                                 v_CPSTATUS        INTEGER default 0,
+                                 v_OUTWARDBED      INTEGER default 0,
+                                 o_reslut          out empcurtyp);
+
+END;
+
+ 
+CREATE OR REPLACE PROCEDURE usp_UpdateUserInfo(v_ID     VARCHAR2,
+                                               v_Name   VARCHAR2,
+                                               v_DeptId VARCHAR2,
+                                               v_WardID VARCHAR2,
+                                               v_JobID  VARCHAR2,
+                                               v_DeptOrWard VARCHAR2,
+                                               v_power VARCHAR2) AS /**********
+ 版本号
+ 创建时间
+ 作者
+ 版权
+ 描述
+ 功能说明      输出更新某个员工信息
+ 输出参数
+ 结果集、排序
+ 调用的sp
+ 调用实例
+**********/
+BEGIN
+  UPDATE Users
+     SET Name   = v_Name,
+         DeptId = v_DeptId,
+         WardID = v_WardID,
+         JobID  = v_JobID,
+         DeptOrWard = v_DeptOrWard,
+         Power = v_power
+   WHERE ID = v_ID;
+END;
+
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 

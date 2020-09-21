@@ -1,0 +1,28 @@
+--创建数据表空间
+
+CREATE TABLESPACE TSP_DSMNSERS
+logging
+DATAFILE 'F:\oracle\oradata\orcl\DSMNSERS.DBF'
+SIZE 2G
+AUTOEXTEND ON
+NEXT 1G
+EXTENT MANAGEMENT LOCAL;
+
+
+
+--创建用户并指定表空间
+create user mns identified by mns default tablespace TSP_DSMNSERS;
+--修改用户并指定表空间
+alter user mns identified by mns default tablespace TSP_DSMNSERS;
+
+
+-- Grant/Revoke role privileges 
+grant connect to mns;
+grant dba to mns;
+grant resource to mns;
+-- Grant/Revoke system privileges 
+grant create procedure to mns;
+grant create table to mns;
+grant create view to mns;
+grant select any table to mns;
+grant unlimited tablespace to mns;

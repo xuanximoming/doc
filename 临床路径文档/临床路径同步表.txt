@@ -1,0 +1,13 @@
+基础信息信息
+科室代码库Department
+病区代码库Ward
+科室病区对应库Dept2Ward 
+用户基本信息库Users
+床位信息库 Bed
+
+药品分类库CP_DrugClassify
+药品分类明细库 CP_DrugClassDetail	
+药品临床目录库 CP_ClinicOfDrug	（药品库最为重要）
+药品产地目录库  CP_PlaceOfDrug	
+药品用法对应库 CP_DrugUseage	
+药品别名库 CP_DrugNickName

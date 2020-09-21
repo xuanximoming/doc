@@ -1,0 +1,132 @@
+-- Create table
+create table HIS_DICT_ITEM
+(
+  item_id        VARCHAR2(12) not null,
+  item_name      VARCHAR2(20),
+  dict_id        VARCHAR2(2),
+  flag           VARCHAR2(1),
+  exception_flag NUMBER(1)
+)
+tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 448K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table HIS_DICT_ITEM
+  add constraint PK_HIS_DICT_ITEM primary key (ITEM_ID)
+  using index 
+  tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+
+-- Create table
+create table PAT_EVALUATION_M
+(
+  patient_id  VARCHAR2(12) not null,
+  visit_id    NUMBER(2),
+  dict_id     VARCHAR2(2) not null,
+  dept_code   VARCHAR2(8),
+  record_date DATE,
+  item_id     VARCHAR2(12) not null,
+  item_name   VARCHAR2(20),
+  item_value  VARCHAR2(20)
+)
+tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 448K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PAT_EVALUATION_M
+  add constraint PK_PAT_EVALUATION_M primary key (PATIENT_ID, DICT_ID, ITEM_ID)
+  using index 
+  tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+
+-- Create table
+create table SPECIMENT_FLOW_REC
+(
+  test_no      VARCHAR2(12) not null,
+  gather_nurse VARCHAR2(5),
+  gather_time  DATE,
+  act          NUMBER(1)
+)
+tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 448K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table SPECIMENT_FLOW_REC
+  add constraint PK_SPECIMENT_FLOW_REC primary key (TEST_NO)
+  using index 
+  tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+
+-- Create table
+create table SHIFT_EXCHANGE_RECORD_DETAIL
+(
+  patient_id VARCHAR2(12) not null,
+  visit_id   NUMBER(2) not null,
+  shift_date DATE
+)
+tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 448K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table SHIFT_EXCHANGE_RECORD_DETAIL
+  add constraint PK_SHIFT_EXCHANGE primary key (PATIENT_ID, VISIT_ID)
+  using index 
+  tablespace TSP_DSMNSERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

@@ -1,0 +1,34 @@
+usp_CP_GetNurPathBasicInfo		3个游标
+
+
+
+usp_CP_GetNurseCode			12个游标
+
+
+
+
+CP_MasterDrugsSynthesisQuery		3个游标
+
+
+
+
+usp_CP_MedicalTreatmentWarm		3个游标
+
+
+usp_CP_NursingNotesRecord		5个游标
+
+
+
+
+usp_CP_PathCutQuery			3个游标
+
+
+
+usp_CP_RWPathEnForcePrint		2个游标
+
+
+
+usp_CP_RWPathSummary			4个游标
+
+
+usp_CP_RptPathQuit			2个游标

@@ -1,0 +1,65 @@
+
+/* ============================================================ */
+/*   Table: CP_InPathPatient	纳入临床路径病人         				*/
+/* ============================================================ */
+IF NOT EXISTS ( SELECT  1
+                FROM    sysobjects
+                WHERE   Name = 'CP_InPathPatient' ) 
+    BEGIN
+        CREATE TABLE CP_InPathPatient
+            (
+              Id NUMERIC(9, 0) IDENTITY
+                               NOT NULL ,	--序号
+              Syxh NUMERIC(9, 0) NOT NULL ,	--病人序号(CP_InPatient.Syxh)
+              Ljdm VARCHAR(12) NOT NULL ,	--临床路径代码(CP_ClinicalPath.Ljdm)
+              Cwys VARCHAR(6) NOT NULL ,--床位医师
+              Jrsj CHAR(19) NOT NULL ,	--进入路径时间
+              Tcsj CHAR(19) NOT NULL ,--退出时间
+	      Ljts int not null ,--当前步骤天数
+              Ljzt INT NOT NULL ,--路径状态(1进入,2.退出")
+              CONSTRAINT PK_CP_InPathPatient PRIMARY KEY ( Id )
+            )
+    END
+go
+
+
+/* ============================================================ */
+/*   Table: CP_ClinicalPath	临床路径				*/
+/* ============================================================ */
+IF NOT EXISTS ( SELECT  1
+                FROM    sysobjects
+                WHERE   Name = 'CP_ClinicalPath' ) 
+    BEGIN
+        CREATE TABLE CP_ClinicalPath
+            (
+              Ljdm VARCHAR(12) NOT NULL ,	--临床路径代码
+              Name VARCHAR(64) NOT NULL ,	--(路径)名称
+              Ljms VARCHAR(255) NOT NULL ,   --路径描述
+              Zgts	 int				not null, --总共天数
+              Jcfy	money			  not null,--均次费用
+              Vesion int				not null ,--版本
+              Cjsj CHAR(19) NOT NULL ,	--创建时间
+              Shsj CHAR(19) NOT NULL ,	--审核时间
+              Shys VARCHAR(6) NOT NULL ,--审核医师
+              Yxjl INT NOT NULL , --是否有效(0、无效1有效.2停止)
+              CONSTRAINT PK_CP_ClinicalPath PRIMARY KEY ( Ljdm )
+            )
+    END
+GO
+
+/* ============================================================ */
+/*   Table: CP_ClinicalDiagnosis	临床路径病种			*/
+/* ============================================================ */
+IF NOT EXISTS ( SELECT  1
+                FROM    sysobjects
+                WHERE   Name = 'CP_ClinicalDiagnosis' ) 
+    BEGIN
+        CREATE TABLE CP_ClinicalDiagnosis
+            (
+              Ljdm VARCHAR(12) NOT NULL ,	--临床路径代码
+              Bzdm VARCHAR(12) NOT NULL ,   --(诊断代码CP_Diagnosis.zddm)
+	      Bzmc VARCHAR(64) NOT NULL ,   --(诊断名称CP_Diagnosis.Name)
+              CONSTRAINT PK_CP_ClinicalDiagnosis PRIMARY KEY ( Ljdm,Bzdm)
+            )
+    END
+GO
