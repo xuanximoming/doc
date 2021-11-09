@@ -1,13 +1,13 @@
 1、列表
-SELECT  a.patient_id  HospitalNo,
-       a.visit_id   PatientSerialNo,
-       a.name   PatName,
+SELECT  a.patient_id  HospitalNo, 住院号
+       a.visit_id   PatientSerialNo,     住院次数
+       a.name   PatName,                姓名
        'LIS' ReportCatalog,
        NULL ReportNo,
-       a.test_no   APPLYITEMCODE,
-       b.item_name  ApplyItemName,
-       to_char(a.REQUESTED_DATE_TIME,'yyyy-mm-dd hh:mi:ss')   SubmitDate,
-       to_char(a.RESULTS_RPT_DATE_TIME,'yyyy-mm-dd hh:mi:ss') ReleaseDate,
+       a.test_no   APPLYITEMCODE,    检验单号
+       b.item_name  ApplyItemName,  检验项目号
+       to_char(a.REQUESTED_DATE_TIME,'yyyy-mm-dd hh:mi:ss')   SubmitDate,  检验时间
+       to_char(a.RESULTS_RPT_DATE_TIME,'yyyy-mm-dd hh:mi:ss') ReleaseDate, 结果时间
        'False' HadRead,
        null ReportType,
        a.test_no SampleNo,
@@ -21,14 +21,28 @@ SELECT  a.patient_id  HospitalNo,
 
 2、详细部分
 select rownum Line,
-       b.report_item_code ItemCode,
-       b.report_item_name ItemName,
-       b.result Result,
-       b.print_context ReferValue,
-       b.units Unit,
-       b.abnormal_indicator HighFlag,
+       b.report_item_code ItemCode,   报告项目代码
+       b.report_item_name ItemName,  项目名称
+       b.result Result,                             结果
+       b.print_context ReferValue,          对比值
+       b.units Unit,                                 单位
+       b.abnormal_indicator HighFlag,    高低标识
        null,
        null ResultColor
   from lab_test_master a, lab_result b
  where a.test_no = b.test_no
    and a.test_no = '{0}'
+
+patient_id  住院号
+visit_id       住院次数
+name        姓名
+test_no     检验单号
+item_name  检验项目名称
+REQUESTED_DATE_TIME    检验时间
+RESULTS_RPT_DATE_TIME   结果时间
+report_item_code     报告项目代码
+report_item_name    项目名称
+result        结果
+print_context        对比值
+units            单位
+abnormal_indicator  高低标识

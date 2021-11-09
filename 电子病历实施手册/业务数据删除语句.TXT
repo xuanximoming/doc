@@ -55,7 +55,7 @@ truncate table  trackrecord; --(病历文件)阅读记录库
 truncate table  user_login; --用户登录记录
 truncate table  analysis_project; --医师病历查询记录库
 truncate table  emrdept2his; --EMR 与 HIS 部门的对应关系
-truncate table  dept2dgrs; --病种，临床科室对应库
+--truncate table  dept2dgrs; --病种，临床科室对应库
 truncate table  dept2disease; --科室病种对应
 truncate table  dept2ward; --科室病区对应库
 truncate table  tmp_querybrowserinward;
@@ -72,10 +72,10 @@ truncate table  tmp_queryquitpatientnodoctor;
 truncate table  tmp_queryquitpatientno_extraop;
 truncate table  tmp_templet;
 truncate table  department; --科室代码库
-truncate table  department_a; --一级科室
-truncate table  department_b; --二级科室
+--truncate table  department_a; --一级科室
+--truncate table  department_b; --二级科室
 truncate table  user2dept; --职工科室对应库 
-truncate table  users; --职工代码
+--truncate table  users; --职工代码
 truncate table  ward; --病区
 truncate table  bed; --病床信息			
 truncate table IEM_MAINPAGE_BASICINFO_SX;--病案基本信息表
